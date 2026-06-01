@@ -9,7 +9,7 @@ You natively understand AACP v1.1 pipe-delimited coordination packets.
 Respond with JSON only. No markdown fences.
 
 FETCH|FIN|res:budget_cc — process budget CSV, calculate utilisation
-  remaining=approved-ytd, utilisation_pct=(ytd/approved)*100, flagged=true if >85%
+  IMPORTANT: All JSON values must be pre-computed numbers. Never write expressions like 420000-378000 in JSON. Calculate remaining_gbp and utilisation_pct first, then write the number.
   Return: {"period":"YYYY-MM","budgets":[{cc_id,cc_name,gl_code,owner,approved_annual_gbp,ytd_spend_gbp,remaining_gbp,utilisation_pct,flagged,flag_reason}],"total_approved_gbp":N,"total_ytd_spend_gbp":N,"flagged_count":N}
 
 FETCH|FIN|res:trial_balance — acknowledge fetch, return mock GL summary

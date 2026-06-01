@@ -1,0 +1,1966 @@
+{
+  "run_id": "lab_v3_gpt-4o_20260601_093417",
+  "model": "gpt-4o",
+  "period": "2026-03",
+  "completed": "2026-06-01T09:36:16.573659+00:00",
+  "workflows": {
+    "payroll": {
+      "workflow": "payroll",
+      "period": "2026-03",
+      "model": "gpt-4o",
+      "started": "2026-06-01T09:34:17.919979+00:00",
+      "completed": "2026-06-01T09:34:43.488463+00:00",
+      "success": true,
+      "hops": [
+        {
+          "from": "ORCHESTRATOR",
+          "to": "HR-AGENT",
+          "packet": "FETCH|HR|return:ORCHESTRATOR|p:1|aacp:1.1|res:emp_salary|period:2026-03|filter:status=active|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 1385,
+          "tokens_out": 635,
+          "cost_usd": 0.0101,
+          "latency_ms": 5195.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "FINANCE-AGENT",
+          "packet": "FETCH|FIN|return:ORCHESTRATOR|p:1|aacp:1.1|res:budget_cc|period:2026-03|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 933,
+          "tokens_out": 451,
+          "cost_usd": 0.00692,
+          "latency_ms": 4613.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "HR-AGENT",
+          "packet": "MERGE|HR|return:ORCHESTRATOR|p:1|aacp:1.1|rules:payroll_v2|validate:budget_cc",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 1785,
+          "tokens_out": 841,
+          "cost_usd": 0.01313,
+          "latency_ms": 6761.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "HR-AGENT",
+          "packet": "REPORT|HR|return:ORCHESTRATOR|p:2|aacp:1.1|fmt:pdf,xlsx|highlight:REVIEW_REQ",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 1543,
+          "tokens_out": 972,
+          "cost_usd": 0.012575,
+          "latency_ms": 7479.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|HR|return:AUDIT-AGENT|p:2|aacp:1.1|actor:ORCHESTRATOR|status:review_required",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        }
+      ],
+      "totals": {
+        "hops": 5,
+        "tokens_in": 5646,
+        "tokens_out": 2899,
+        "cost_usd": 0.0427,
+        "latency_ms": 24049.0
+      },
+      "output": {
+        "employees": {
+          "employees": [
+            {
+              "id": "E001",
+              "name": "Alice Smith",
+              "dept": "Engineering",
+              "cost_centre": "CC-10",
+              "base_salary": 72000,
+              "delta": 0,
+              "gross_pay": 72000,
+              "pension_rate": 0.05
+            },
+            {
+              "id": "E002",
+              "name": "Bob Jones",
+              "dept": "Sales",
+              "cost_centre": "CC-20",
+              "base_salary": 58000,
+              "delta": 2500,
+              "gross_pay": 60500,
+              "pension_rate": 0.05
+            },
+            {
+              "id": "E003",
+              "name": "Carol White",
+              "dept": "Finance",
+              "cost_centre": "CC-30",
+              "base_salary": 65000,
+              "delta": 0,
+              "gross_pay": 65000,
+              "pension_rate": 0.08
+            },
+            {
+              "id": "E004",
+              "name": "David Brown",
+              "dept": "Engineering",
+              "cost_centre": "CC-10",
+              "base_salary": 85000,
+              "delta": 5000,
+              "gross_pay": 90000,
+              "pension_rate": 0.05
+            },
+            {
+              "id": "E005",
+              "name": "Eve Davis",
+              "dept": "HR",
+              "cost_centre": "CC-40",
+              "base_salary": 52000,
+              "delta": 0,
+              "gross_pay": 52000,
+              "pension_rate": 0.05
+            },
+            {
+              "id": "E006",
+              "name": "Frank Miller",
+              "dept": "Engineering",
+              "cost_centre": "CC-10",
+              "base_salary": 91000,
+              "delta": 3000,
+              "gross_pay": 94000,
+              "pension_rate": 0.05
+            },
+            {
+              "id": "E007",
+              "name": "Grace Lee",
+              "dept": "Sales",
+              "cost_centre": "CC-20",
+              "base_salary": 54000,
+              "delta": 1500,
+              "gross_pay": 55500,
+              "pension_rate": 0.05
+            },
+            {
+              "id": "E008",
+              "name": "Henry Wilson",
+              "dept": "Finance",
+              "cost_centre": "CC-30",
+              "base_salary": 61000,
+              "delta": 0,
+              "gross_pay": 61000,
+              "pension_rate": 0.08
+            }
+          ],
+          "total_employees": 8,
+          "total_gross": 550000,
+          "period": "2026-03"
+        },
+        "budgets": {
+          "period": "2026-03",
+          "budgets": [
+            {
+              "cc_id": "CC-10",
+              "cc_name": "Engineering",
+              "gl_code": "GL-1010",
+              "owner": "Sarah Chen",
+              "approved_annual_gbp": 420000,
+              "ytd_spend_gbp": 378000,
+              "remaining_gbp": 42000,
+              "utilisation_pct": 90,
+              "flagged": false,
+              "flag_reason": ""
+            },
+            {
+              "cc_id": "CC-20",
+              "cc_name": "Sales",
+              "gl_code": "GL-2020",
+              "owner": "Marcus Webb",
+              "approved_annual_gbp": 140000,
+              "ytd_spend_gbp": 98000,
+              "remaining_gbp": 42000,
+              "utilisation_pct": 70,
+              "flagged": false,
+              "flag_reason": ""
+            },
+            {
+              "cc_id": "CC-30",
+              "cc_name": "Finance",
+              "gl_code": "GL-3030",
+              "owner": "David Park",
+              "approved_annual_gbp": 160000,
+              "ytd_spend_gbp": 124000,
+              "remaining_gbp": 36000,
+              "utilisation_pct": 77.5,
+              "flagged": false,
+              "flag_reason": ""
+            },
+            {
+              "cc_id": "CC-40",
+              "cc_name": "HR",
+              "gl_code": "GL-4040",
+              "owner": "Linda Torres",
+              "approved_annual_gbp": 95000,
+              "ytd_spend_gbp": 71000,
+              "remaining_gbp": 24000,
+              "utilisation_pct": 74.74,
+              "flagged": false,
+              "flag_reason": ""
+            }
+          ],
+          "total_approved_gbp": 815000,
+          "total_ytd_spend_gbp": 671000,
+          "flagged_count": 0
+        },
+        "payroll": {
+          "period": "2026-03",
+          "pay_date": "2026-03-28",
+          "employees": [
+            {
+              "id": "E001",
+              "name": "Alice Smith",
+              "dept": "Engineering",
+              "cost_centre": "CC-10",
+              "gross_pay": 72000,
+              "pension": 3600,
+              "paye": 14400,
+              "net_pay": 54000,
+              "budget_status": "OK",
+              "budget_note": ""
+            },
+            {
+              "id": "E002",
+              "name": "Bob Jones",
+              "dept": "Sales",
+              "cost_centre": "CC-20",
+              "gross_pay": 60500,
+              "pension": 3025,
+              "paye": 12100,
+              "net_pay": 45375,
+              "budget_status": "OK",
+              "budget_note": ""
+            },
+            {
+              "id": "E003",
+              "name": "Carol White",
+              "dept": "Finance",
+              "cost_centre": "CC-30",
+              "gross_pay": 65000,
+              "pension": 5200,
+              "paye": 13000,
+              "net_pay": 46800,
+              "budget_status": "OK",
+              "budget_note": ""
+            },
+            {
+              "id": "E004",
+              "name": "David Brown",
+              "dept": "Engineering",
+              "cost_centre": "CC-10",
+              "gross_pay": 90000,
+              "pension": 4500,
+              "paye": 18000,
+              "net_pay": 67500,
+              "budget_status": "BREACH",
+              "budget_note": "YTD spend exceeds 90% of approved budget."
+            },
+            {
+              "id": "E005",
+              "name": "Eve Davis",
+              "dept": "HR",
+              "cost_centre": "CC-40",
+              "gross_pay": 52000,
+              "pension": 2600,
+              "paye": 10400,
+              "net_pay": 39000,
+              "budget_status": "OK",
+              "budget_note": ""
+            },
+            {
+              "id": "E006",
+              "name": "Frank Miller",
+              "dept": "Engineering",
+              "cost_centre": "CC-10",
+              "gross_pay": 94000,
+              "pension": 4700,
+              "paye": 18800,
+              "net_pay": 70500,
+              "budget_status": "BREACH",
+              "budget_note": "YTD spend exceeds 90% of approved budget."
+            },
+            {
+              "id": "E007",
+              "name": "Grace Lee",
+              "dept": "Sales",
+              "cost_centre": "CC-20",
+              "gross_pay": 55500,
+              "pension": 2775,
+              "paye": 11100,
+              "net_pay": 41625,
+              "budget_status": "OK",
+              "budget_note": ""
+            },
+            {
+              "id": "E008",
+              "name": "Henry Wilson",
+              "dept": "Finance",
+              "cost_centre": "CC-30",
+              "gross_pay": 61000,
+              "pension": 4880,
+              "paye": 12200,
+              "net_pay": 43920,
+              "budget_status": "OK",
+              "budget_note": ""
+            }
+          ],
+          "totals": {
+            "gross": 550000,
+            "net": 429720,
+            "paye": 110000,
+            "pension": 31280,
+            "employee_count": 8
+          },
+          "anomalies": [],
+          "warnings": [],
+          "budget_status": "REVIEW_REQUIRED",
+          "requires_approval": true
+        },
+        "report": {
+          "period": "2026-03",
+          "pay_date": "2026-03-28",
+          "executive_summary": "The payroll for the period ending March 2026 has been processed, comprising a total gross pay of GBP 550,000 for 8 employees. Notably, two cost centres, CC-10, have breached their budget threshold, requiring immediate review and approval due to the year-to-date spend exceeding 90% of the approved budget.",
+          "key_figures": {
+            "total_gross_gbp": 550000,
+            "total_net_gbp": 429720,
+            "total_paye_gbp": 110000,
+            "total_pension_gbp": 31280,
+            "employee_count": 8,
+            "anomaly_count": 0
+          },
+          "cost_centre_summary": [
+            {
+              "cc_id": "CC-10",
+              "cc_name": "Engineering",
+              "approved_budget": "unknown",
+              "ytd_before": "unknown",
+              "payroll_this_period": 256000,
+              "ytd_after": "unknown",
+              "utilisation_pct": "unknown",
+              "status": "BREACH",
+              "action_required": "Review and approval required due to budget breach."
+            },
+            {
+              "cc_id": "CC-20",
+              "cc_name": "Sales",
+              "approved_budget": "unknown",
+              "ytd_before": "unknown",
+              "payroll_this_period": 116000,
+              "ytd_after": "unknown",
+              "utilisation_pct": "unknown",
+              "status": "OK",
+              "action_required": "None"
+            },
+            {
+              "cc_id": "CC-30",
+              "cc_name": "Finance",
+              "approved_budget": "unknown",
+              "ytd_before": "unknown",
+              "payroll_this_period": 126000,
+              "ytd_after": "unknown",
+              "utilisation_pct": "unknown",
+              "status": "OK",
+              "action_required": "None"
+            },
+            {
+              "cc_id": "CC-40",
+              "cc_name": "HR",
+              "approved_budget": "unknown",
+              "ytd_before": "unknown",
+              "payroll_this_period": 52000,
+              "ytd_after": "unknown",
+              "utilisation_pct": "unknown",
+              "status": "OK",
+              "action_required": "None"
+            }
+          ],
+          "employee_summary": [
+            {
+              "id": "E001",
+              "name": "Alice Smith",
+              "dept": "Engineering",
+              "gross": 72000,
+              "net": 54000,
+              "status": "OK"
+            },
+            {
+              "id": "E002",
+              "name": "Bob Jones",
+              "dept": "Sales",
+              "gross": 60500,
+              "net": 45375,
+              "status": "OK"
+            },
+            {
+              "id": "E003",
+              "name": "Carol White",
+              "dept": "Finance",
+              "gross": 65000,
+              "net": 46800,
+              "status": "OK"
+            },
+            {
+              "id": "E004",
+              "name": "David Brown",
+              "dept": "Engineering",
+              "gross": 90000,
+              "net": 67500,
+              "status": "BREACH"
+            },
+            {
+              "id": "E005",
+              "name": "Eve Davis",
+              "dept": "HR",
+              "gross": 52000,
+              "net": 39000,
+              "status": "OK"
+            },
+            {
+              "id": "E006",
+              "name": "Frank Miller",
+              "dept": "Engineering",
+              "gross": 94000,
+              "net": 70500,
+              "status": "BREACH"
+            },
+            {
+              "id": "E007",
+              "name": "Grace Lee",
+              "dept": "Sales",
+              "gross": 55500,
+              "net": 41625,
+              "status": "OK"
+            },
+            {
+              "id": "E008",
+              "name": "Henry Wilson",
+              "dept": "Finance",
+              "gross": 61000,
+              "net": 43920,
+              "status": "OK"
+            }
+          ],
+          "anomalies": [],
+          "recommended_actions": [
+            "Immediate review and approval by Finance Director for cost centre CC-10."
+          ],
+          "requires_review": true
+        }
+      }
+    },
+    "month_end": {
+      "workflow": "month_end_close",
+      "period": "2026-03",
+      "model": "gpt-4o",
+      "started": "2026-06-01T09:34:43.488689+00:00",
+      "completed": "2026-06-01T09:34:57.707223+00:00",
+      "success": true,
+      "hops": [
+        {
+          "from": "ORCHESTRATOR",
+          "to": "FINANCE-AGENT",
+          "packet": "FETCH|FIN|return:ORCHESTRATOR|p:1|aacp:1.1|res:trial_balance|period:2026-03|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 661,
+          "tokens_out": 45,
+          "cost_usd": 0.00353,
+          "latency_ms": 1234.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "FINANCE-AGENT",
+          "packet": "PROC|FIN|return:ORCHESTRATOR|p:1|aacp:1.1|res:bank_reconciliation|period:2026-03|rules:recon_v1|validate:gl_match",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 742,
+          "tokens_out": 44,
+          "cost_usd": 0.00393,
+          "latency_ms": 1132.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "FINANCE-AGENT",
+          "packet": "CALC|FIN|return:ORCHESTRATOR|p:1|aacp:1.1|res:accruals|period:2026-03|rules:accrual_policy_v2|validate:period_cutoff",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 747,
+          "tokens_out": 149,
+          "cost_usd": 0.00448,
+          "latency_ms": 1539.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "FINANCE-AGENT",
+          "packet": "CALC|FIN|return:ORCHESTRATOR|p:2|aacp:1.1|res:variance_analysis|period:2026-03|src_prev:gl://close/2026-02|highlight:MATERIAL_VARIANCE",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 844,
+          "tokens_out": 240,
+          "cost_usd": 0.00542,
+          "latency_ms": 2749.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "FINANCE-AGENT",
+          "packet": "REPORT|FIN|return:ORCHESTRATOR|p:2|aacp:1.1|period:2026-03|fmt:pdf,xlsx|tmpl:mgmt_accounts_v1|highlight:REVIEW_REQ",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 988,
+          "tokens_out": 327,
+          "cost_usd": 0.006575,
+          "latency_ms": 5740.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|FIN|return:AUDIT-AGENT|p:2|aacp:1.1|res:close_certification|period:2026-03|actor:ORCHESTRATOR|status:certified",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        }
+      ],
+      "totals": {
+        "hops": 6,
+        "tokens_in": 3982,
+        "tokens_out": 805,
+        "cost_usd": 0.0239,
+        "latency_ms": 12395.0
+      },
+      "output": {
+        "trial_balance": {
+          "period": "2026-03",
+          "status": "fetched",
+          "gl_entries": 150,
+          "open_items": 20,
+          "total_debits_gbp": 500000,
+          "total_credits_gbp": 500000,
+          "balanced": true
+        },
+        "reconciliation": {
+          "period": "2026-03",
+          "status": "reconciled",
+          "matched_items": 130,
+          "unmatched_items": 20,
+          "unmatched_value_gbp": 0,
+          "reconciled": true,
+          "anomalies": []
+        },
+        "accruals": {
+          "period": "2026-03",
+          "accruals_posted": 3,
+          "total_value_gbp": 15000,
+          "journal_entries": [
+            {
+              "account": "Accrued Expenses",
+              "amount_gbp": 6000,
+              "description": "Accrued salaries"
+            },
+            {
+              "account": "Prepaid Income",
+              "amount_gbp": 4000,
+              "description": "Deferred revenue"
+            },
+            {
+              "account": "Accrued Liabilities",
+              "amount_gbp": 5000,
+              "description": "Outstanding supplier invoices"
+            }
+          ],
+          "status": "posted"
+        },
+        "variance_analysis": {
+          "period": "2026-03",
+          "variances": [
+            {
+              "category": "Revenue",
+              "current_gbp": 250000,
+              "prior_gbp": 230000,
+              "variance_gbp": 20000,
+              "variance_pct": 8.7,
+              "material": true,
+              "note": "Higher sales volumes"
+            },
+            {
+              "category": "Cost of Goods Sold",
+              "current_gbp": 150000,
+              "prior_gbp": 140000,
+              "variance_gbp": 10000,
+              "variance_pct": 7.1,
+              "material": true,
+              "note": "Increased material costs"
+            },
+            {
+              "category": "Operational Expenses",
+              "current_gbp": 50000,
+              "prior_gbp": 52000,
+              "variance_gbp": -2000,
+              "variance_pct": -3.8,
+              "material": false,
+              "note": "Cost-saving measures effective"
+            }
+          ],
+          "material_variances": 2,
+          "status": "complete"
+        },
+        "management_accounts": {
+          "period": "2026-03",
+          "executive_summary": "The financial performance for March 2026 shows a strong revenue growth driven by higher sales volumes. However, there is an increase in the Cost of Goods Sold due to higher material costs. Operational expenses have been managed effectively due to cost-saving measures. Reconciliation has been completed with no unmatched value.",
+          "key_figures": {
+            "revenue_gbp": 250000,
+            "costs_gbp": 200000,
+            "gross_margin_pct": 20.0,
+            "ebitda_gbp": 30000
+          },
+          "status_by_cc": [
+            {
+              "cc_id": "001",
+              "cc_name": "Sales",
+              "budget_gbp": 260000,
+              "actual_gbp": 250000,
+              "variance_gbp": -10000,
+              "rag": "AMBER"
+            },
+            {
+              "cc_id": "002",
+              "cc_name": "Production",
+              "budget_gbp": 140000,
+              "actual_gbp": 150000,
+              "variance_gbp": 10000,
+              "rag": "RED"
+            },
+            {
+              "cc_id": "003",
+              "cc_name": "Operations",
+              "budget_gbp": 60000,
+              "actual_gbp": 50000,
+              "variance_gbp": -10000,
+              "rag": "GREEN"
+            }
+          ],
+          "recommended_actions": [],
+          "requires_approval": true
+        }
+      }
+    },
+    "sales": {
+      "workflow": "sales_qualification",
+      "period": "2026-03",
+      "model": "gpt-4o",
+      "started": "2026-06-01T09:34:57.707485+00:00",
+      "completed": "2026-06-01T09:35:26.713581+00:00",
+      "success": true,
+      "hops": [
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "FETCH|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_profile|filter:id=L-001|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 566,
+          "tokens_out": 101,
+          "cost_usd": 0.003335,
+          "latency_ms": 1247.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "CALC|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_score|filter:id=L-001|rules:bant",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 590,
+          "tokens_out": 99,
+          "cost_usd": 0.003445,
+          "latency_ms": 1571.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "PROC|SALES|return:ORCHESTRATOR|p:2|aacp:1.1|res:lead_routing|filter:id=L-001|validate:score>=60",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 591,
+          "tokens_out": 76,
+          "cost_usd": 0.003335,
+          "latency_ms": 1041.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|SALES|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:processed",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "SEND|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|subj:qualified_lead_L-001|highlight:ACTION_REQUIRED",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 564,
+          "tokens_out": 31,
+          "cost_usd": 0.002975,
+          "latency_ms": 565.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "FETCH|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_profile|filter:id=L-002|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 567,
+          "tokens_out": 102,
+          "cost_usd": 0.003345,
+          "latency_ms": 1076.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "CALC|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_score|filter:id=L-002|rules:bant",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 591,
+          "tokens_out": 111,
+          "cost_usd": 0.00351,
+          "latency_ms": 1686.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "PROC|SALES|return:ORCHESTRATOR|p:2|aacp:1.1|res:lead_routing|filter:id=L-002|validate:score>=60",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 603,
+          "tokens_out": 76,
+          "cost_usd": 0.003395,
+          "latency_ms": 1216.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|SALES|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:processed",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "SEND|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|subj:qualified_lead_L-002|highlight:ACTION_REQUIRED",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 564,
+          "tokens_out": 19,
+          "cost_usd": 0.002915,
+          "latency_ms": 819.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "FETCH|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_profile|filter:id=L-003|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 565,
+          "tokens_out": 100,
+          "cost_usd": 0.003325,
+          "latency_ms": 1125.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "CALC|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_score|filter:id=L-003|rules:bant",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 589,
+          "tokens_out": 105,
+          "cost_usd": 0.00347,
+          "latency_ms": 1423.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "PROC|SALES|return:ORCHESTRATOR|p:2|aacp:1.1|res:lead_routing|filter:id=L-003|validate:score>=60",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 597,
+          "tokens_out": 78,
+          "cost_usd": 0.003375,
+          "latency_ms": 1021.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|SALES|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:processed",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "SEND|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|subj:qualified_lead_L-003|highlight:ACTION_REQUIRED",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 566,
+          "tokens_out": 28,
+          "cost_usd": 0.00297,
+          "latency_ms": 924.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "FETCH|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_profile|filter:id=L-004|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 565,
+          "tokens_out": 100,
+          "cost_usd": 0.003325,
+          "latency_ms": 1535.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "CALC|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_score|filter:id=L-004|rules:bant",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 589,
+          "tokens_out": 97,
+          "cost_usd": 0.00343,
+          "latency_ms": 1543.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "PROC|SALES|return:ORCHESTRATOR|p:2|aacp:1.1|res:lead_routing|filter:id=L-004|validate:score>=60",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 589,
+          "tokens_out": 76,
+          "cost_usd": 0.003325,
+          "latency_ms": 1240.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|SALES|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:processed",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "SEND|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|subj:qualified_lead_L-004|highlight:ACTION_REQUIRED",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 564,
+          "tokens_out": 29,
+          "cost_usd": 0.002965,
+          "latency_ms": 1110.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "FETCH|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_profile|filter:id=L-005|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 565,
+          "tokens_out": 100,
+          "cost_usd": 0.003325,
+          "latency_ms": 1429.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "CALC|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|res:lead_score|filter:id=L-005|rules:bant",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 589,
+          "tokens_out": 102,
+          "cost_usd": 0.003455,
+          "latency_ms": 1239.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "PROC|SALES|return:ORCHESTRATOR|p:2|aacp:1.1|res:lead_routing|filter:id=L-005|validate:score>=60",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 594,
+          "tokens_out": 72,
+          "cost_usd": 0.00333,
+          "latency_ms": 1122.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|SALES|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:processed",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "SALES-AGENT",
+          "packet": "SEND|SALES|return:ORCHESTRATOR|p:1|aacp:1.1|subj:qualified_lead_L-005|highlight:ACTION_REQUIRED",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 560,
+          "tokens_out": 30,
+          "cost_usd": 0.00295,
+          "latency_ms": 735.0,
+          "error": null
+        }
+      ],
+      "totals": {
+        "hops": 25,
+        "tokens_in": 11568,
+        "tokens_out": 1532,
+        "cost_usd": 0.0655,
+        "latency_ms": 23672.0
+      },
+      "output": {
+        "leads_processed": 5,
+        "results": [
+          {
+            "lead_id": "L-001",
+            "company": "Apex Systems",
+            "score": 82.5,
+            "qualified": true,
+            "stage": "discovery_call",
+            "rep": "sales_rep"
+          },
+          {
+            "lead_id": "L-002",
+            "company": "Bright Future Ltd",
+            "score": 62.5,
+            "qualified": true,
+            "stage": "discovery_call",
+            "rep": "assigned_rep"
+          },
+          {
+            "lead_id": "L-003",
+            "company": "CoreTech Solutions",
+            "score": 97.5,
+            "qualified": true,
+            "stage": "discovery_call",
+            "rep": "assigned_rep"
+          },
+          {
+            "lead_id": "L-004",
+            "company": "Delta Consulting",
+            "score": 50,
+            "qualified": false,
+            "stage": "nurture_sequence",
+            "rep": "nurture"
+          },
+          {
+            "lead_id": "L-005",
+            "company": "Echo Dynamics",
+            "score": 72.5,
+            "qualified": true,
+            "stage": "discovery_call",
+            "rep": "assigned_rep"
+          }
+        ],
+        "qualified": 4
+      }
+    },
+    "cs": {
+      "workflow": "cs_resolution",
+      "period": "2026-03",
+      "model": "gpt-4o",
+      "started": "2026-06-01T09:35:26.713785+00:00",
+      "completed": "2026-06-01T09:35:56.016062+00:00",
+      "success": true,
+      "hops": [
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "FETCH|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:customer_profile|filter:id=C-4421|fields:history,ltv,loyalty,open_tickets,sentiment|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 529,
+          "tokens_out": 82,
+          "cost_usd": 0.003055,
+          "latency_ms": 1530.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "PROC|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:ticket_triage|filter:id=T-001|req:categorise,sentiment_score,priority_score",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 596,
+          "tokens_out": 75,
+          "cost_usd": 0.003355,
+          "latency_ms": 1491.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "RESOLVE|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:complaint|filter:id=T-001|sentiment:negative|tone:empathetic|ltv:8500|ccy:GBP|req:resolve%2cgoodwill_consider",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 696,
+          "tokens_out": 133,
+          "cost_usd": 0.004145,
+          "latency_ms": 1589.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "SEND|CS|return:ORCHESTRATOR|p:1|aacp:1.1|to:C-4421|subj:resolution_T-001|tone:empathetic|flag_msg:resolution_sent",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 573,
+          "tokens_out": 34,
+          "cost_usd": 0.003035,
+          "latency_ms": 918.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|CS|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:resolved",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "FETCH|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:customer_profile|filter:id=C-1832|fields:history,ltv,loyalty,open_tickets,sentiment|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 525,
+          "tokens_out": 77,
+          "cost_usd": 0.00301,
+          "latency_ms": 924.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "PROC|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:ticket_triage|filter:id=T-002|req:categorise,sentiment_score,priority_score",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 587,
+          "tokens_out": 80,
+          "cost_usd": 0.003335,
+          "latency_ms": 1050.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "RESOLVE|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:complaint|filter:id=T-002|sentiment:negative|tone:empathetic|ltv:2100|ccy:GBP|req:resolve",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 685,
+          "tokens_out": 121,
+          "cost_usd": 0.00403,
+          "latency_ms": 2086.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "SEND|CS|return:ORCHESTRATOR|p:1|aacp:1.1|to:C-1832|subj:resolution_T-002|tone:empathetic|flag_msg:resolution_sent",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 558,
+          "tokens_out": 34,
+          "cost_usd": 0.00296,
+          "latency_ms": 777.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|CS|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:resolved",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "FETCH|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:customer_profile|filter:id=C-9910|fields:history,ltv,loyalty,open_tickets,sentiment|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 527,
+          "tokens_out": 79,
+          "cost_usd": 0.00303,
+          "latency_ms": 1123.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "PROC|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:ticket_triage|filter:id=T-003|req:categorise,sentiment_score,priority_score",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 591,
+          "tokens_out": 47,
+          "cost_usd": 0.00319,
+          "latency_ms": 711.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "RESOLVE|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:complaint|filter:id=T-003|sentiment:negative|tone:empathetic|ltv:15000|ccy:GBP|req:resolve%2cgoodwill_consider",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 680,
+          "tokens_out": 140,
+          "cost_usd": 0.0041,
+          "latency_ms": 1853.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "SEND|CS|return:ORCHESTRATOR|p:1|aacp:1.1|to:C-9910|subj:resolution_T-003|tone:empathetic|flag_msg:resolution_sent",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 577,
+          "tokens_out": 34,
+          "cost_usd": 0.003055,
+          "latency_ms": 680.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|CS|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:resolved",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "FETCH|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:customer_profile|filter:id=C-3341|fields:history,ltv,loyalty,open_tickets,sentiment|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 525,
+          "tokens_out": 78,
+          "cost_usd": 0.003015,
+          "latency_ms": 1110.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "PROC|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:ticket_triage|filter:id=T-004|req:categorise,sentiment_score,priority_score",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 588,
+          "tokens_out": 56,
+          "cost_usd": 0.00322,
+          "latency_ms": 881.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "RESOLVE|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:complaint|filter:id=T-004|sentiment:negative|tone:empathetic|ltv:4200|ccy:GBP|req:resolve",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 662,
+          "tokens_out": 131,
+          "cost_usd": 0.003965,
+          "latency_ms": 1633.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "SEND|CS|return:ORCHESTRATOR|p:1|aacp:1.1|to:C-3341|subj:resolution_T-004|tone:empathetic|flag_msg:resolution_sent",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 568,
+          "tokens_out": 34,
+          "cost_usd": 0.00301,
+          "latency_ms": 1051.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|CS|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:resolved",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "FETCH|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:customer_profile|filter:id=C-7751|fields:history,ltv,loyalty,open_tickets,sentiment|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 524,
+          "tokens_out": 76,
+          "cost_usd": 0.003,
+          "latency_ms": 1718.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "PROC|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:ticket_triage|filter:id=T-005|req:categorise,sentiment_score,priority_score",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 585,
+          "tokens_out": 67,
+          "cost_usd": 0.00326,
+          "latency_ms": 1127.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "RESOLVE|CS|return:ORCHESTRATOR|p:1|aacp:1.1|res:complaint|filter:id=T-005|sentiment:neutral|tone:empathetic|ltv:890|ccy:GBP|req:resolve",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 669,
+          "tokens_out": 99,
+          "cost_usd": 0.00384,
+          "latency_ms": 1228.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "CS-AGENT",
+          "packet": "SEND|CS|return:ORCHESTRATOR|p:1|aacp:1.1|to:C-7751|subj:resolution_T-005|tone:empathetic|flag_msg:resolution_sent",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 536,
+          "tokens_out": 34,
+          "cost_usd": 0.00285,
+          "latency_ms": 612.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|CS|return:AUDIT-AGENT|p:3|aacp:1.1|actor:ORCHESTRATOR|status:resolved",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        }
+      ],
+      "totals": {
+        "hops": 25,
+        "tokens_in": 11781,
+        "tokens_out": 1511,
+        "cost_usd": 0.0665,
+        "latency_ms": 24097.0
+      },
+      "output": {
+        "tickets_processed": 5,
+        "results": [
+          {
+            "ticket_id": "T-001",
+            "customer_id": "C-4421",
+            "subject": "Order not arrived after 2 weeks",
+            "ltv_gbp": 8500,
+            "category": "delivery",
+            "resolution_strategy": "Due to the high lifetime value and negative sentiment, pursue a conciliatory resolution with a focus on customer satisfaction.",
+            "goodwill_offer": true,
+            "goodwill_amount": 50,
+            "escalate": false,
+            "sent": true
+          },
+          {
+            "ticket_id": "T-002",
+            "customer_id": "C-1832",
+            "subject": "Wrong item delivered",
+            "ltv_gbp": 2100,
+            "category": "delivery",
+            "resolution_strategy": "Offer to send the correct item at no additional cost and apologize for the inconvenience.",
+            "goodwill_offer": false,
+            "goodwill_amount": 0,
+            "escalate": false,
+            "sent": true
+          },
+          {
+            "ticket_id": "T-003",
+            "customer_id": "C-9910",
+            "subject": "Billing error on March invoice",
+            "ltv_gbp": 15000,
+            "category": "billing",
+            "resolution_strategy": "Address the billing error in detail and assure correction with confirmation of updated invoice.",
+            "goodwill_offer": true,
+            "goodwill_amount": 50,
+            "escalate": false,
+            "sent": true
+          },
+          {
+            "ticket_id": "T-004",
+            "customer_id": "C-3341",
+            "subject": "Product stopped working",
+            "ltv_gbp": 4200,
+            "category": "product",
+            "resolution_strategy": "Offer product replacement or repair",
+            "goodwill_offer": false,
+            "goodwill_amount": 0,
+            "escalate": true,
+            "sent": true
+          },
+          {
+            "ticket_id": "T-005",
+            "customer_id": "C-7751",
+            "subject": "Request for refund",
+            "ltv_gbp": 890,
+            "category": "refund",
+            "resolution_strategy": "approve refund request",
+            "goodwill_offer": false,
+            "goodwill_amount": 0,
+            "escalate": false,
+            "sent": true
+          }
+        ],
+        "resolved": 5,
+        "goodwill_offered": 2
+      }
+    },
+    "jml": {
+      "workflow": "jml_onboarding",
+      "period": "2026-03",
+      "model": "gpt-4o",
+      "started": "2026-06-01T09:35:56.016227+00:00",
+      "completed": "2026-06-01T09:36:16.573487+00:00",
+      "success": true,
+      "hops": [
+        {
+          "from": "ORCHESTRATOR",
+          "to": "HR-AGENT",
+          "packet": "FETCH|HR|return:ORCHESTRATOR|p:1|aacp:1.1|res:employee_record|filter:id=E009|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 679,
+          "tokens_out": 101,
+          "cost_usd": 0.0039,
+          "latency_ms": 1297.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "BUILD|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:ad_account|filter:usr=j.porter|fields:email,dept,grp,pwd_reset",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 476,
+          "tokens_out": 70,
+          "cost_usd": 0.00273,
+          "latency_ms": 1241.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "PROC|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:licence_assignment|filter:usr=j.porter|req:M365,Slack,GitHub,Jira",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 405,
+          "tokens_out": 66,
+          "cost_usd": 0.002355,
+          "latency_ms": 2654.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "BUILD|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:access_profile|filter:usr=j.porter|req:email,vpn,sharepoint,github",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 401,
+          "tokens_out": 68,
+          "cost_usd": 0.002345,
+          "latency_ms": 1021.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "SEND|HR|return:ORCHESTRATOR|p:2|aacp:1.1|to:j.porter|subj:welcome_j.porter_onboarding|flag_msg:onboarding_complete",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 549,
+          "tokens_out": 39,
+          "cost_usd": 0.00294,
+          "latency_ms": 1435.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|IT|return:AUDIT-AGENT|p:2|aacp:1.1|actor:ORCHESTRATOR|status:provisioned|filter:usr=j.porter",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "HR-AGENT",
+          "packet": "FETCH|HR|return:ORCHESTRATOR|p:1|aacp:1.1|res:employee_record|filter:id=E010|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 676,
+          "tokens_out": 98,
+          "cost_usd": 0.00387,
+          "latency_ms": 1117.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "BUILD|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:ad_account|filter:usr=p.sharma|fields:email,dept,grp,pwd_reset",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 473,
+          "tokens_out": 56,
+          "cost_usd": 0.002645,
+          "latency_ms": 835.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "PROC|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:licence_assignment|filter:usr=p.sharma|req:M365,Slack,Salesforce",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 398,
+          "tokens_out": 39,
+          "cost_usd": 0.002185,
+          "latency_ms": 718.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "BUILD|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:access_profile|filter:usr=p.sharma|req:email,vpn,salesforce",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 395,
+          "tokens_out": 64,
+          "cost_usd": 0.002295,
+          "latency_ms": 791.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "SEND|HR|return:ORCHESTRATOR|p:2|aacp:1.1|to:p.sharma|subj:welcome_p.sharma_onboarding|flag_msg:onboarding_complete",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 536,
+          "tokens_out": 36,
+          "cost_usd": 0.00286,
+          "latency_ms": 745.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|IT|return:AUDIT-AGENT|p:2|aacp:1.1|actor:ORCHESTRATOR|status:provisioned|filter:usr=p.sharma",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "HR-AGENT",
+          "packet": "FETCH|HR|return:ORCHESTRATOR|p:1|aacp:1.1|res:employee_record|filter:id=E011|fmt:json",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 676,
+          "tokens_out": 98,
+          "cost_usd": 0.00387,
+          "latency_ms": 1331.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "BUILD|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:ad_account|filter:usr=t.bradley|fields:email,dept,grp,pwd_reset",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 475,
+          "tokens_out": 62,
+          "cost_usd": 0.002685,
+          "latency_ms": 1022.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "PROC|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:licence_assignment|filter:usr=t.bradley|req:M365,Slack,NetSuite",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 400,
+          "tokens_out": 62,
+          "cost_usd": 0.00231,
+          "latency_ms": 922.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "BUILD|IT|return:ORCHESTRATOR|p:1|aacp:1.1|res:access_profile|filter:usr=t.bradley|req:email,vpn,netsuite",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 397,
+          "tokens_out": 65,
+          "cost_usd": 0.00231,
+          "latency_ms": 925.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "IT-AGENT",
+          "packet": "SEND|HR|return:ORCHESTRATOR|p:2|aacp:1.1|to:t.bradley|subj:welcome_t.bradley_onboarding|flag_msg:onboarding_complete",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 546,
+          "tokens_out": 41,
+          "cost_usd": 0.002935,
+          "latency_ms": 819.0,
+          "error": null
+        },
+        {
+          "from": "ORCHESTRATOR",
+          "to": "AUDIT-AGENT",
+          "packet": "LOG|IT|return:AUDIT-AGENT|p:2|aacp:1.1|actor:ORCHESTRATOR|status:provisioned|filter:usr=t.bradley",
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "warnings": []
+          },
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "cost_usd": 0.0,
+          "latency_ms": 1,
+          "error": null
+        }
+      ],
+      "totals": {
+        "hops": 18,
+        "tokens_in": 7482,
+        "tokens_out": 965,
+        "cost_usd": 0.0422,
+        "latency_ms": 16876.0
+      },
+      "output": {
+        "hires_processed": 3,
+        "results": [
+          {
+            "employee_id": "E009",
+            "name": "James Porter",
+            "username": "j.porter",
+            "dept": "Engineering",
+            "role": "Software Engineer",
+            "email": "j.porter@company.com",
+            "licences": [
+              "M365",
+              "Slack",
+              "GitHub",
+              "Jira"
+            ],
+            "systems": [
+              "email",
+              "vpn",
+              "sharepoint",
+              "github"
+            ],
+            "welcome_sent": true
+          },
+          {
+            "employee_id": "E010",
+            "name": "Priya Sharma",
+            "username": "p.sharma",
+            "dept": "Sales",
+            "role": "Account Executive",
+            "email": "p.sharma@company.com",
+            "licences": [
+              "M365",
+              "Slack",
+              "Salesforce"
+            ],
+            "systems": [
+              "email",
+              "vpn",
+              "salesforce"
+            ],
+            "welcome_sent": true
+          },
+          {
+            "employee_id": "E011",
+            "name": "Tom Bradley",
+            "username": "t.bradley",
+            "dept": "Finance",
+            "role": "Finance Analyst",
+            "email": "t.bradley@company.com",
+            "licences": [
+              "M365",
+              "Slack",
+              "NetSuite"
+            ],
+            "systems": [
+              "email",
+              "vpn",
+              "netsuite"
+            ],
+            "welcome_sent": true
+          }
+        ],
+        "provisioned": 3
+      }
+    }
+  },
+  "totals": {
+    "workflows": 5,
+    "hops": 79,
+    "tokens_in": 40459,
+    "cost_usd": 0.2408,
+    "latency_ms": 101089.0
+  }
+}

@@ -64,7 +64,7 @@ class BaseAgent:
             client = self._client()
             if self.provider == "anthropic":
                 r = client.messages.create(
-                    model=self.model, max_tokens=2000,
+                    model=self.model, max_tokens=4000,
                     system=self.system_prompt,
                     messages=[{"role": "user", "content": user_msg}],
                 )
@@ -73,7 +73,7 @@ class BaseAgent:
                 tokens_out = r.usage.output_tokens
             else:
                 r = client.chat.completions.create(
-                    model=self.model, max_tokens=2000,
+                    model=self.model, max_tokens=4000,
                     messages=[
                         {"role": "system", "content": self.system_prompt},
                         {"role": "user",   "content": user_msg},

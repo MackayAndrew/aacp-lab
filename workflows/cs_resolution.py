@@ -36,6 +36,7 @@ def run(cs_agent, audit_agent, period="2026-03", model="gpt-4.1-mini"):
                  {"ticket": ticket, "customer_profile": r1["result"]},
                  lambda x: f"Category: {x.get('category','?')} Escalate: {x.get('escalate',False)}")
         if r2["error"]: continue
+        if not r2["result"]: continue
 
         ltv       = int(ticket.get("ltv_gbp", 0) or 0)
         sentiment = ticket.get("sentiment", "negative")
