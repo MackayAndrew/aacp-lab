@@ -1,0 +1,6 @@
+id,company,contact,title,budget_gbp,timeline_months,need_score,authority_score,engaged,assigned_rep
+L-001,Apex Systems,James Ford,CTO,85000,3,8,9,true,Marcus Webb
+L-002,Bright Future Ltd,Sarah Noble,Head of IT,42000,6,6,7,true,Grace Lee
+L-003,CoreTech Solutions,Raj Patel,CEO,120000,2,9,10,true,Marcus Webb
+L-004,Delta Consulting,Emma Shaw,CFO,28000,9,4,8,false,Grace Lee
+L-005,Echo Dynamics,Tom Chen,VP Engineering,67000,4,7,6,true,Marcus Webb

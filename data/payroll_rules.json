@@ -1,0 +1,11 @@
+{
+  "version": "payroll_v2",
+  "period": "2026-03",
+  "paye_rate": 0.20,
+  "budget_warning_threshold": 0.85,
+  "budget_breach_threshold": 0.90,
+  "currency": "GBP",
+  "pay_date": "2026-03-28",
+  "approver": "Finance Director",
+  "notes": "Q1 FY2026 close. Final payroll before year-end."
+}

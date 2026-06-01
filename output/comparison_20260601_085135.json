@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-06-01T08:51:35.979114+00:00",
+  "period": "2026-03",
+  "models": [
+    "gpt-4.1-mini",
+    "gpt-4.1",
+    "claude-sonnet-4-5",
+    "gpt-4o"
+  ],
+  "results": [
+    {
+      "model": "gpt-4.1-mini",
+      "cost_usd": 0.0163,
+      "tokens_in": 37204,
+      "latency_ms": 130178.0
+    },
+    {
+      "model": "gpt-4.1",
+      "cost_usd": 0.0991,
+      "tokens_in": 41052,
+      "latency_ms": 111173.0
+    },
+    {
+      "model": "claude-sonnet-4-5",
+      "cost_usd": 0.2183,
+      "tokens_in": 54425,
+      "latency_ms": 465610.0
+    },
+    {
+      "model": "gpt-4o",
+      "cost_usd": 0.2396,
+      "tokens_in": 40381,
+      "latency_ms": 123093.0
+    }
+  ]
+}
